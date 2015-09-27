@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="sample.css">
+<title>じゃんけん</title>
+<script>
+function janken(num){
+
+  //コンピューターの出し手
+  var janken= [1,2,3];
+  var com_result = 	Math.floor(Math.random() * janken.length);
+  
+  //じゃんけんの結果を判定
+  if(com_result ==1){
+    com_result_moji = "コンピュータ：グー"; 
+  }else if(com_result==2){
+    com_result_moji = "コンピュータ：チョキ";
+  }else{
+    com_result_moji = "コンピュータ：パー";
+  }
+  console.log(com_result_moji);
+
+  if(num == com_result){
+    kekka ="引き分けです";   
+  } else if(num == 1 && com_result ==2){
+    kekka ="あなたの勝ち";
+  } else if(num == 1 && com_result ==3){
+    kekka ="あなたの負け";
+  } else if(num == 2 && com_result ==1){
+    kekka ="あなたの負け";
+  } else if(num == 2 && com_result ==3){
+    kekka ="あなたの勝ち";
+  } else if(num == 3 && com_result ==1){
+    kekka ="あなたの勝ち";
+  } else if(num == 3 && com_result ==2){
+    kekka ="あなたの負け";
+  } else{
+    kekka ="";
+  }
+  //結果確認
+  console.log(num);
+  console.log(com_result);
+  console.log(kekka);
+    
+  //画面表示
+  document.getElementById('pc').innerHTML = com_result_moji;
+  document.getElementById('num').innerHTML = kekka;
+};
+</script>
+</head>
+<body>
+
+<header>
+	<h1>じゃんけん</h1>
+</header>
+
+<main>
+	<ul>
+		<li id="gu_btn" onclick="janken(1)">グー</li>
+		<li id="cho_btn" onclick="janken(2)">チョキ</li>
+		<li id="par_btn" onclick="janken(3)">パー</li>
+	</ul>
+	<div id="pc">コンピュータの出した手は？</div>
+	<div id="num">ここに表示されます</div>
+</main>
+
+<footer></footer>
+
+</body>
+</html>

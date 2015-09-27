@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>課題</title>
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<script>
+$(document).ready(function(){
+
+	//localStorageで登録されたものを取得
+	var get_latitude = localStorage.getItem("num1");
+	var get_longitude = localStorage.getItem("num2");
+
+	//取得した要素を格納
+	$("#latitude").val(get_latitude);
+	$("#longitude").val(get_longitude);
+
+    $("#btn").on("click",function(){
+	
+	    //この中に処理を記述 開始    
+	    var latitude = parseInt($('#latitude').val(),10) ;
+	    var longitude = parseInt($('#longitude').val(),10);
+	    
+	    //localStorageを登録
+	    localStorage.setItem("num1",latitude);
+	    localStorage.setItem("num2",longitude);
+	    
+	    //document.getElementById('output').innerHTML() = latitude;
+	    var latlng = new google.maps.LatLng(latitude,longitude);
+	    var opts = {
+	    zoom: 10,
+	    center: latlng,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	    };
+	    var map = new google.maps.Map(document.getElementById("output"), opts);
+	    //console.log(map);
+    });
+    
+});
+</script>
+</head>
+<body>
+
+	<header>
+	<h1>お気に入りの場所を紹介</h1>
+	緯度：<input id="latitude"  size="20" type="text" name="" />
+	経度：<input id="longitude"  size="20" type="text" name="" />
+	<input id="btn" type="button" value="登録">
+	</header>
+	
+	<main id="output" style="width:500px; height:300px">
+	  
+	</main>
+	
+	<footer></footer>
+
+</body>
+
+</html>

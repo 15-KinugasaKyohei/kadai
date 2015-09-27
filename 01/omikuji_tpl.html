@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="sample.css">
+<title>おみくじ</title>
+<script>
+function kakunin(num){
+//ここに記述していきます！
+  
+  if(num == 1)  {
+    alert("★の箱がクリックされました");
+  }else if(num == 2){
+    alert("●の箱がクリックされました");
+  }else{
+    alert("■の箱がクリックされました");
+  }
+
+  var omikuji= ["大吉","中吉","小吉","凶","大凶" ];
+  var result = 	Math.floor(Math.random() * omikuji.length);
+  
+  document.getElementById('name').innerHTML = omikuji[result];
+}
+</script>
+</head>
+<body>
+
+<header>
+    <h1>おみくじ</h1>
+</header>
+
+<main>
+    <ul>
+        <li id="hoshi" onClick="kakunin(1)">★の箱</li>
+        <li id="maru" onClick="kakunin(2)">●の箱</li>
+        <li id="shikaku" onClick="kakunin(3)">■の箱</li>
+    </ul>
+    <p id="name"></p>
+</main>
+
+<footer>フッター</footer>
+
+</body>
+</html>

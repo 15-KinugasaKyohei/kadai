@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>canvas.html</title>
+</head>
+<body>
+<section>
+<h1>Canvas</h1>
+<nav>
+ <!-- 線の色を変更するHTML要素 -->
+ <!-- 線の太さを変更するHTML要素 -->
+  <button id="clear_btn">クリアー</button>
+  <button id="save_btn">保存</button>
+  <div>
+  <span>線の太さ</span>
+  <form>
+  <select name="line_bold"  id="lv1Pulldown">
+  <option value="bold">太い</option>
+  <option value="normal">ふつう</option>
+  <option value="nallow">細い</option> 
+  </select>
+  </form>
+  </div>
+  <div>
+  <span>線の色</span>
+  <form>
+  <select name="line_color" id="lv2Pulldown">
+  <option value="black">黒</option>
+  <option value="red">赤</option>
+  <option value="blue">青</option> 
+  </select>
+  </form>
+  </div>
+</nav>
+
+<canvas id="drowarea" width="500" height="500" style="border:1px solid blue;"></canvas>
+</section>
+<section>
+<div><img id="image_png"></div>
+<div><img id="image_jpeg"></div>
+</section>
+
+
+<script src="js/jquery-2.1.3.min.js"></script>
+<script>
+//初期化
+var canvas_mouse_event = false; //スイッチ [ true=線を引く, false=線は引かない ]  ＊＊＊
+var txy   = 10;               //iPadなどは15＋すると良いかも
+var oldX  = 0;                //１つ前の座標を代入するための変数
+var oldY  = 0;                //１つ前の座標を代入するための変数
+var bold_line = 5;            //ラインの太さをここで指定
+var color = "#000";           //ラインの色をここで指定
+
+//------------------------------------------------
+var can = $("#drowarea")[0]; //CanvasElement
+var context = can.getContext("2d"); //描画するための準備！
+//------------------------------------------------
+//上2つのスクリプトを記述します。
+
+
+//MouseDown：フラグをTrue
+//-----------------------------------------------
+$(can).on("mousedown", function(e){
+oldX = e.offsetX;       //MOUSEDOWNしたX横座標取得
+oldY = e.offsetY - txy; //MOUSEDOWN Y高さ座標取得
+canvas_mouse_event=true;
+});
+//-----------------------------------------------
+//上5つのスクリプトを記述します。
+
+
+//MouseMove：
+//----------------------------------------------
+$(can).on("mousemove", function (e){
+  if(canvas_mouse_event==true){
+      var px = e.offsetX;
+      var py = e.offsetY - txy;
+      context.strokeStyle = color;
+      context.lineWidth = bold_line;
+      context.beginPath();
+      context.lineJoin= "round";
+      context.lineCap = "round";
+      context.moveTo(oldX, oldY);
+      context.lineTo(px, py);
+      context.stroke();
+      context.closePath();
+      oldX = px;
+      oldY = py;
+  }
+});
+
+//MouseUp：フラグをfalse
+//------------------------------------------------
+$(can).on("mouseup", function(e){
+    canvas_mouse_event=false;
+});
+//------------------------------------------------
+
+
+//クリアーボタンAction
+//-----------------------------------------------------------------
+$("#clear_btn").on("click",function (){
+    context.beginPath();
+    context.clearRect(0, 0, can.width, can.height);
+});
+//-----------------------------------------------------------------
+
+//線の太さ変更Action
+//-----------------------------------------------------------------
+$("#lv1Pulldown").change(function () {
+  console.log(bold_line);
+  var lv1Val = $("#lv1Pulldown").val();
+  console.log(lv1Val);
+  if (lv1Val == "normal"){
+    bold_line = 5;
+  }else if(lv1Val == "bold"){
+    bold_line = 7;
+  }else{
+    bold_line = 3;
+  }
+  console.log(bold_line);
+});
+//-----------------------------------------------------------------
+
+//線の色変更Action
+//-----------------------------------------------------------------
+$("#lv2Pulldown").change(function () {
+  console.log(color);
+  var lv2Val = $("#lv2Pulldown").val();
+  console.log(lv2Val);
+  if (lv2Val == "red"){
+    color = "red";
+  }else if(lv2Val == "blue"){
+    color ="blue";
+  }else{
+    color ="#000";
+  }
+  console.log(color);
+});
+//-----------------------------------------------------------------
+
+
+
+// canvasの描画結果をPNGで取り出しimg要素にセット */
+$("#save_btn").on("click",function(){
+	try {
+  	var img_png_src = can.toDataURL();
+    console.log("hello_png");
+  	console.log(img_png_src);
+  	document.getElementById("image_png").src = img_png_src;
+  	document.getElementById("data_url_png").firstChild.nodeValue = img_png_src;
+	} catch(e) {
+  	document.getElementById("image_png").alt = "未対応";
+	}
+});
+
+///* canvasの描画結果をJPEGで取り出しimg要素にセット */
+try {
+  var img_jpeg_src = can.toDataURL("image/jpeg");
+      console.log("hello_jpeg");
+  document.getElementById("image_jpeg").src = img_jpeg_src;
+  document.getElementById("data_url_jpeg").firstChild.nodeValue = img_jpeg_src;
+} catch(e) {
+  document.getElementById("image_jpeg").alt = "未対応";
+}
+
+
+</script>
+</body>
+</html>

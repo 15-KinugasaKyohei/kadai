@@ -1,0 +1,316 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+/* 文字コードを指定する*/
+@charset "utf-8";
+
+/* 共通部 */
+body{
+  font-size:62.5%;
+  font-family:'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
+
+h2{
+  font-size:32px;
+  
+}
+
+.standard-width{
+  width:960px;
+  margin:0 auto;
+}
+
+.font-big{
+  font-size:22px;
+}
+
+.font_middle{
+  font-size:16px;
+}
+
+.text-center{
+  text-align:center;
+}
+
+.text-left{
+  text-align:left;       
+}
+
+.text-right{
+  text-align:left;       
+}
+
+.font-white{
+  color:white;
+  margin:5px 0;
+}
+
+.font-orange{
+  color:orange;
+  margin:5px 0;
+}
+
+.font-black{
+  color:black;
+  margin:5px 0;
+}
+
+.inner{
+  width:960px;
+  margin:0 auto;
+    /* 2つ書いた場合：1個目は上下、2個目は左右  3つ書いた場合：1個目は上、2個目は左右 3個めは下 4つ書いた場合:時計回りで指定する。*/
+}
+
+.header-title{
+  float:left;
+}
+
+.header-list{
+  float:right;
+  margin:20px;
+}
+
+.header-list:after{
+  clear:both;
+}
+
+/* main-visual部 */
+.main-visual{
+  background-image: url(../img/bg-cheese.jpg);
+  height: 570px;
+  position: relative;   
+  background-position: center center;
+  max-height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-title{
+  width:100%;
+  text-align:center;
+  top:45%;
+  position:absolute;
+  font-size:40px;
+  color:white;
+}
+
+.sub-title{
+  width:100%;
+  text-align:center;
+  top:55%;
+  position:absolute;
+  font-size:22px;
+  color:white;
+}
+
+/* news部 */
+.std-width{
+  margin:30px auto;   
+}
+
+.news{
+  text-align:left;
+  margin:30px 0px 30px 200px;
+}
+
+.news > dl{
+  width:400px;
+  margin-right:200px;   
+}
+
+.news > dl > dt{
+  text-align:left;
+  float:left;
+  width:100px;
+}
+
+.news > dl > dd{
+  text-align:left;
+  float:left;
+  width:300px;
+}
+
+.view-list{
+  text-align:right;
+  margin:30px 100px 30px 0px;
+}
+
+
+/*feature部*/
+
+.feature-title{
+  padding-top:30px;
+}
+
+.feature{
+  background-color:orange;
+}
+
+.feature-content{
+ padding:30px 0px;   
+}
+.point1{
+  float:left; 
+  margin:0 31px;
+}
+
+.point2{
+  float:left;
+  margin:0 31px;
+}
+
+.point3{
+  float:left;
+  margin:0 31px;
+}
+
+/*course部*/
+
+.lab{
+    width:850px;
+}
+
+.course-title{
+  padding:30px 0px;
+}
+
+.lab > img{
+  float:left;
+}
+
+.lab-content{
+  float:right;
+  text-align:center;
+  width:400px;
+  margin-right:30px;
+  margin-top:80px;
+}
+
+.academy{
+  width:850px;
+  margin:auto;
+  margin-bottom:40px;
+}
+
+.academy > img{
+  float:right;   
+}
+
+.academy-content{
+  float:left;  
+  width:400px;
+  margin-left:30px;
+  margin-top:80px;
+
+}
+
+/*garalley部*/
+.gallery-title{
+  background-color:orange   ;
+  text-align:center;
+  padding:40px 0px 30px 0px;
+  margin-bottom:30px;
+}
+
+.gallery-contents{
+  width:720px;
+  margin:0 auto;
+}
+    
+.gallery-contents > ul > li{
+  float:left;
+  margin:10px 10px;
+}
+
+.gallery-contents > ul > li a:hover img {
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+  -ms-filter: "alpha(opacity=70)";
+}
+
+/*entry部*/
+.entry-title{   
+  background-color:orange;
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+.entry-content{
+}
+
+.contact-table{
+  text-align:center;
+}
+
+.contact-table > dl{ 
+  width:750px;
+  text-align:center;
+  margin:10px 130px;
+}
+
+
+.contact-table > dl > dt{
+  
+  float:left;
+  width:300px;
+  text-align:left;
+  margin-top:10px;
+  margin-left:100px;
+}
+
+.contact-table > dl > dd{
+  width:350px;
+  text-align:left;
+  float:left;
+  margin-top:10px;
+  padding-top:10px;
+
+}
+
+.radio_c{
+  margin:10px auto;
+}
+.entry_button{
+  text-align:center;
+  margin:50px auto;
+}
+
+/*information部*/
+.gray_back{ 
+  background-color:gray;  
+}
+
+.information-title{
+  padding-top:30px;
+  padding-bottom:30px;
+}
+
+.pic-array{
+  width:625px;
+  margin:0 auto;
+}
+.pic-array > img{
+  background-color:white; 
+  margin-top:12.5px;
+  margin-left:12.5px;
+  margin-right:12.5px;
+}
+
+.notification{
+  float:left;
+  padding-top:20px;
+  margin-left:180px;
+}
+
+.notification > p{
+  font-size:11px;
+}
+
+.pagetop{
+  float:right;
+}
